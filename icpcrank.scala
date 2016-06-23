@@ -107,15 +107,20 @@ object icpcrank {
     res
   }
 
+  def saveFile(rr: Seq[String], name: String) {
+    val pw = new java.io.PrintWriter(name)
+    for (r <- rr)
+      pw.println(r)
+    pw.close
+  }
+
   def saveFile(rr: Seq[String]) {
     import java.util.{Calendar,Locale,TimeZone}
     import java.util.Calendar._
     val T_NOW = Calendar.getInstance(TimeZone.getTimeZone("Asia/Tokyo"), Locale.JAPAN)
-    val pw = new java.io.PrintWriter("%02d%02d_%02d%02d%02d.html".format(
-      T_NOW.get(MONTH), T_NOW.get(DAY_OF_MONTH), T_NOW.get(HOUR_OF_DAY), T_NOW.get(MINUTE), T_NOW.get(SECOND)))
-    for (r <- rr)
-      pw.println(r)
-    pw.close
+    val name = "log/%02d%02d_%02d%02d%02d.html".format(
+      T_NOW.get(MONTH), T_NOW.get(DAY_OF_MONTH), T_NOW.get(HOUR_OF_DAY), T_NOW.get(MINUTE), T_NOW.get(SECOND))
+    saveFile(rr, name)
   }
 
   class Domestic2016(state: Int = 1) extends OneBrowser(state) {
@@ -145,8 +150,8 @@ object icpcrank {
     val ss: Seq[String] = fx.result
     val tt: Seq[Team]   = ss.map(s => makeTeam(s))
     val rr: Seq[String] = makeHtml(tt)
-    for (r <- rr)
-      println(r)
+
+    saveFile(rr, "index.html")
     saveFile(rr)
   }
 }
