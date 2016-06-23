@@ -1,5 +1,5 @@
 import LibFx._
-object testmain {
+object icpcrank {
   def isInt(s: String): Boolean = s.map(_.isDigit).reduce(_ && _)
   case class Team(id: String, rank: String, solved: Int, time: Int, _name: String, univ: String, member: String) extends Ordered[Team] {
     var urank: String = "-"
