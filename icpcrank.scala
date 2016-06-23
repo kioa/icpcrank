@@ -66,6 +66,7 @@ object icpcrank {
     val res = (Nil: List[String]).toBuffer
 
     res += "<html>"
+    res += "<head>%s</head>".format("""<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">""")
     res += "<body>"
     res += """本家のページをコピーして色を付けてます。観戦にご活用ください。(<a href="#caution">※注</a>)"""
 
