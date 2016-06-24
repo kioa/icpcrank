@@ -24,7 +24,11 @@ object icpcrank {
     val id     = t(0)
     val rank   = t(1)
     val solved = t(2).toInt
-    val time   = t(3).tail.init.toInt
+    val r_time = """(.*)\((\d+)\)(.*)""".r
+    val time   = t(3) match {
+      case r_time(l, m, r) => m.toInt
+      case _   => -1
+    }
     val name   = t(4)
     val r = """(.*)\s\[.*\]""".r
     val univ   = t(5) match {
