@@ -2,7 +2,7 @@ icpcrank
 ====
 
 ## 何か
-ICPC国内予選の通過圏内にいるチームに色を付けて表示する。
+2016年のICPC日本国内予選の通過圏内にいるチームに色を付けて表示する。
 
 ## 依存
 * scala
@@ -15,7 +15,7 @@ ICPC国内予選の通過圏内にいるチームに色を付けて表示する�
     $ mkdir log  # log用フォルダ
 
 ## 実行
-次のコマンドでそれっぽいHTMLを`index.html`と`log/mmdd-hhmmss.html`に出力
+次のコマンドでそれっぽいHTMLを`log/mmdd-hhmmss.html`に出力
 
     $ scala icpcrank
 
