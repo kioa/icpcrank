@@ -9,10 +9,13 @@ ICPC国内予選の通過圏内にいるチームに色を付けて表示する�
 * java1.8.0以上
 
 ## コンパイル
-* scalac LibFx.scala icpcrank.scala
+
+    $ scalac LibFx.scala
+    $ scalac icpcrank.scala
+    $ mkdir log  # log用フォルダ
 
 ## 実行
-次のコマンドでそれっぽいHTMLを表示
+次のコマンドでそれっぽいHTMLを`index.html`と`log/mmdd-hhmmss.html`に出力
 
     $ scala icpcrank
 
