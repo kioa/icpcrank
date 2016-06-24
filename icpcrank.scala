@@ -68,6 +68,7 @@ object icpcrank {
     res += "<html>"
     res += "<head>%s</head>".format("""<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">""")
     res += "<body>"
+    res += "UPDATED AT %s<br/>".format(now)
     res += """本家のページをコピーして色を付けてます。観戦にご活用ください。(<a href="#caution">※注</a>)"""
 
     def td(s: String): String = "<td>" + s + "</td>"
@@ -123,6 +124,14 @@ object icpcrank {
     saveFile(rr, name)
   }
 
+  def now: String = {
+    import java.util.{Calendar,Locale,TimeZone}
+    import java.util.Calendar._
+    val T_NOW = Calendar.getInstance(TimeZone.getTimeZone("Asia/Tokyo"), Locale.JAPAN)
+    "%02d/%02d-%02d:%02d:%02d".format(
+      T_NOW.get(MONTH), T_NOW.get(DAY_OF_MONTH), T_NOW.get(HOUR_OF_DAY), T_NOW.get(MINUTE), T_NOW.get(SECOND))
+  }
+
   class Domestic2016(state: Int = 1) extends OneBrowser(state) {
     def self(state: Int) = new Domestic2016(state)
     def browse: (Option[Http], Option[Browser]) = state match {
@@ -151,7 +160,6 @@ object icpcrank {
     val tt: Seq[Team]   = ss.map(s => makeTeam(s))
     val rr: Seq[String] = makeHtml(tt)
 
-    saveFile(rr, "index.html")
     saveFile(rr)
   }
 }
